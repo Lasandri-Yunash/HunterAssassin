@@ -58,7 +58,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BowShot
+  m_Name: Attack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -72,7 +72,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 242027e40dbba744aa92d5531bf5ad9e, type: 2}
+  m_Motion: {fileID: 7400000, guid: 21cdd8a2b73942a4d86b3534a7837099, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -98,7 +98,7 @@ AnimatorStateMachine:
     m_Position: {x: 610, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4133687636841349652}
-    m_Position: {x: 350, y: 230, z: 0}
+    m_Position: {x: 350, y: 200, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -472801877386303967}

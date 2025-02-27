@@ -36,6 +36,9 @@ public class EnemyMovement : MonoBehaviour
 
     float distanceToTarget = Mathf.Infinity;
 
+    public int damageAmount = 10;
+
+
     NavMeshAgent navMeshAgent;
     Animator animator;
     PlayerHealth playerHealth;
@@ -185,20 +188,41 @@ public class EnemyMovement : MonoBehaviour
         hasSeen = true;
     }
 
+    private IEnumerator DamageOverTime()
+    {
+        while (playerHealth.hitPoints > 0)
+        {
+            playerHealth.TakeDamage(10); // Apply -10 damage
+            Debug.Log("Player hit by laser! Damage: -10");
+
+            if (playerHealth.hitPoints <= 0)
+            {
+                break; // Stop coroutine if health reaches 0
+            }
+
+            yield return new WaitForSeconds(1f); // Wait 1 second before next damage
+        }
+
+        animator.SetBool("Attack", false); // Stop attack animation if player dies
+    }
+
     private void AttackPlayer()
     {
         FaceTarget();
         navMeshAgent.SetDestination(transform.position);
         animator.SetBool("EnemyRun", false);
+
         if (playerHealth.hitPoints == 0)
         {
             animator.SetBool("Attack", false);
         }
-        else if (playerHealth.hitPoints != 0)
+        else
         {
             animator.SetBool("Attack", true);
+            StartCoroutine(DamageOverTime()); // Start gradual damage
         }
     }
+
 
     private void FaceTarget()
     {

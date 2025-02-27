@@ -18,6 +18,9 @@ public class VisionCone : MonoBehaviour
     float difficultyFOV;
     float difficultyViewDistance;
 
+    public int damageAmount = 10;
+
+
     void Start()
     {
         gameObject.AddComponent<MeshRenderer>().material = VisionConeMaterial;
@@ -84,5 +87,19 @@ public class VisionCone : MonoBehaviour
         VisionConeMesh.vertices = Vertices;
         VisionConeMesh.triangles = triangles;
         MeshFilter_.mesh = VisionConeMesh;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damageAmount);
+                //audioSource.Play();
+                Debug.Log("Player hit by laser! Damage: " + damageAmount);
+            }
+        }
     }
 }

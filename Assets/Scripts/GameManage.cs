@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class GameManage : MonoBehaviour
 {
     [Header("Enemy")]
-    //[SerializeField] TextMeshProUGUI enemyCounter;
+    [SerializeField] TextMeshProUGUI enemyCounter;
     int totalCount;
     int totalRemaining;
     public bool levelCleared;
@@ -26,7 +26,7 @@ public class GameManage : MonoBehaviour
     [SerializeField] float levelCompleteDelay = 3f;
 
     [Header("Level Failed")]
-   // [SerializeField] GameObject levelFailedPanel;
+    [SerializeField] GameObject levelFailedPanel;
 
     PlayerHealth player;
     AudioSource audioSource;
@@ -38,7 +38,7 @@ public class GameManage : MonoBehaviour
         wallet = FindObjectOfType<PlayerWallet>();
 
         totalCount = totalEnemies.Length;
-       levelCleared = false;
+        levelCleared = false;
 
         levelCompletedPanel.SetActive(false);
         levelCompleteCanvasGroup.alpha = 0;
@@ -47,7 +47,7 @@ public class GameManage : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
 
-       // levelFailedPanel.SetActive(false);
+        levelFailedPanel.SetActive(false);
     }
 
     void Update()
@@ -73,7 +73,7 @@ public class GameManage : MonoBehaviour
 
     void GameOverDelay()
     {
-      //  levelFailedPanel.SetActive(true);
+        levelFailedPanel.SetActive(true);
     }
 
     private void EnemyCounter()
@@ -84,7 +84,7 @@ public class GameManage : MonoBehaviour
         {
             levelCleared = true;
         }
-       // enemyCounter.text = totalRemaining.ToString() + "/" + totalCount.ToString();
+        enemyCounter.text = totalRemaining.ToString() + "/" + totalCount.ToString();
     }
 
     private void GemCounter()
@@ -110,7 +110,6 @@ public class GameManage : MonoBehaviour
 
     void UnlockNewLevel()
     {
-
         if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
         {
             PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);

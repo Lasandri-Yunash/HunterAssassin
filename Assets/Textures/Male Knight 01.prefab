@@ -1326,7 +1326,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6520920500748925139}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.633, y: 0, z: -2.966}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1433,8 +1433,8 @@ MonoBehaviour:
   hasAttacked: 0
   gems: {fileID: 8583761927749165004, guid: 800b106617d29424ca7f25565ff51eee, type: 3}
   spawnRadius: 1
-  minGems: 10
-  maxGems: 15
+  minGems: 2
+  maxGems: 5
   bloodParticles: {fileID: 5160105457744806139}
   bloodSplash: {fileID: 4451146426906053217, guid: 33852a5686097e041bce58ab1b72b80b, type: 3}
   knifeSFX: {fileID: 8300000, guid: f1286e0f706bb764bbd9c9706c1a70b3, type: 3}

@@ -42,13 +42,12 @@ public class EnemyAttack : MonoBehaviour
         if (target == null)
             return;
 
-
-
         if (currentSceneName == difficultyLevel)
         {
             target.TakeDamage(difficultyDamage);
             shootingParticles.Play();
-            PlayGunShotEffect();
+            Debug.Log("laser");
+            //PlayGunShotEffect();
         }
 
 

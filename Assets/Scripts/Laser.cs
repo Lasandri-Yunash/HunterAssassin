@@ -24,6 +24,7 @@ public class Laser : MonoBehaviour
             {
                 playerHealth.TakeDamage(damageAmount);
                 audioSource.Play();
+                Debug.Log("Player hit by laser! Damage: " + damageAmount);
             }
         }
     }

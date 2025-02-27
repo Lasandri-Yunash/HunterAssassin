@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] public float hitPoints = 100f;
     [SerializeField] GameObject deathParticles;
 
+
     PlayerMovement player;
     EnemyMovement enemy;
 
