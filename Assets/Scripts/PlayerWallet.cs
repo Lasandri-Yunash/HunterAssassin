@@ -23,7 +23,7 @@ public class PlayerWallet : MonoBehaviour
     public void IncreaseGems(int gemvalue)
     {
         gemsAmount += gemvalue;
-     //   audioSource.PlayOneShot(gemSound);
+        audioSource.PlayOneShot(gemSound);
 
         SaveGemCount();
     }

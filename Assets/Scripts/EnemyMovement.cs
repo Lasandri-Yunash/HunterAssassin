@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -33,15 +33,19 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] LayerMask targetMask;
     [SerializeField] LayerMask obstructionMask;
     [SerializeField] DifficultyGenerator difficultyGenerator;
-
+    [SerializeField] AudioSource swordSFX;
     float distanceToTarget = Mathf.Infinity;
 
     public int damageAmount = 10;
+    private bool isAttacking = false;
+    
+
 
 
     NavMeshAgent navMeshAgent;
     Animator animator;
     PlayerHealth playerHealth;
+    AudioSource audioSource;
     Vector3 newPos;
 
     string currentSceneName;
@@ -57,6 +61,7 @@ public class EnemyMovement : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         playerHealth = FindObjectOfType<PlayerHealth>();
+        audioSource = GetComponent<AudioSource>();
         canSeePlayer = false;
         currentSceneName = SceneManager.GetActiveScene().name;
 
@@ -188,7 +193,7 @@ public class EnemyMovement : MonoBehaviour
         hasSeen = true;
     }
 
-    private IEnumerator DamageOverTime()
+    /*private IEnumerator DamageOverTime()
     {
         while (playerHealth.hitPoints > 0)
         {
@@ -204,6 +209,22 @@ public class EnemyMovement : MonoBehaviour
         }
 
         animator.SetBool("Attack", false); // Stop attack animation if player dies
+    }*/
+
+    private IEnumerator DamageOverTime()
+    {
+        isAttacking = true;
+
+        while (animator.GetBool("Attack") && playerHealth.hitPoints > 0)
+        {
+            
+            playerHealth.TakeDamage(10);
+            Debug.Log("Player takes 10 damage!");
+
+            yield return new WaitForSeconds(1.0f); // ✅ Attack every 1 second
+        }
+
+        isAttacking = false;
     }
 
     private void AttackPlayer()
@@ -215,13 +236,43 @@ public class EnemyMovement : MonoBehaviour
         if (playerHealth.hitPoints == 0)
         {
             animator.SetBool("Attack", false);
+            StopswordShotEffect();
         }
         else
         {
             animator.SetBool("Attack", true);
-            StartCoroutine(DamageOverTime()); // Start gradual damage
+            PlayswordShotEffect();
+            if (!isAttacking)
+            {
+                StartCoroutine(DamageOverTime());
+            }
         }
     }
+
+    /*void PlayGunShotEffect()
+    {
+        if (swordSFX != null)
+        {
+            AudioSource.PlayClipAtPoint(swordSFX, transform.position);
+        }
+    }*/
+
+    void PlayswordShotEffect()
+    {
+        if (swordSFX != null && !swordSFX.isPlaying)
+        {
+            swordSFX.Play();
+        }
+    }
+
+    void StopswordShotEffect()
+    {
+        if (swordSFX != null && swordSFX.isPlaying)
+        {
+            swordSFX.Stop();
+        }
+    }
+
 
 
     private void FaceTarget()

@@ -362,7 +362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3468485332857831914
 Transform:
   m_ObjectHideFlags: 0
@@ -432,6 +432,7 @@ MonoBehaviour:
     m_Bits: 448
   VisionConeResolution: 120
   difficultyGenerator: {fileID: 11400000, guid: 2f74444dc0bc17e44a7bed7f785142fc, type: 2}
+  damageAmount: 10
 --- !u!1 &3791910595313407088
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,7 +613,7 @@ Animator:
   m_GameObject: {fileID: 4778145132917898199}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f586ff304a60ccc46bdebb7c5a7901e9, type: 3}
-  m_Controller: {fileID: 9100000, guid: c68a2353361d74542b07357dfea0bb39, type: 2}
+  m_Controller: {fileID: 9100000, guid: dff709bbeff39334b842d40e206830a4, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -675,6 +676,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   difficultyGenerator: {fileID: 11400000, guid: 2f74444dc0bc17e44a7bed7f785142fc, type: 2}
+  damageAmount: 10
 --- !u!114 &6414874181982007672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,7 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7371b30699544e64ea10f0913ab98639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingParticles: {fileID: 0}
+  shootingParticles: {fileID: 4910231309639489721}
   gunShotSFX: {fileID: 8300000, guid: acdebaea3ce61104585e2ecbcd710886, type: 3}
   difficultyGenerator: {fileID: 11400000, guid: 2f74444dc0bc17e44a7bed7f785142fc, type: 2}
 --- !u!1 &5132877553016428490
@@ -1049,7 +1051,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4420084481668868955
 Transform:
   m_ObjectHideFlags: 0

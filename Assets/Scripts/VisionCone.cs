@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -89,7 +89,7 @@ public class VisionCone : MonoBehaviour
         MeshFilter_.mesh = VisionConeMesh;
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -98,6 +98,19 @@ public class VisionCone : MonoBehaviour
             {
                 playerHealth.TakeDamage(damageAmount);
                 //audioSource.Play();
+                Debug.Log("Player hit by laser! Damage: " + damageAmount);
+            }
+        }
+    }*/
+    // Detect player entering the vision cone
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damageAmount);
                 Debug.Log("Player hit by laser! Damage: " + damageAmount);
             }
         }

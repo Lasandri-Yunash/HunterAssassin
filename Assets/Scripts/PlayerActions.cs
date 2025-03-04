@@ -17,6 +17,9 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] GameObject bloodSplash;
     [SerializeField] AudioClip knifeSFX;
 
+    [Header("Damage")]
+    public int damageEnemy = 10;
+
     Animator animator;
     AudioSource audioSource;
 
@@ -62,12 +65,15 @@ public class PlayerActions : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+
             if (!hasAttacked)
             {
-                //KnifeStabSound();
-               // bloodParticles.Play();
+                KnifeStabSound();
+                //bloodParticles.Play();
                 //bloodSplash.transform.localScale = new Vector3(1f, 1f, 1f);
                 //Instantiate(bloodSplash, other.gameObject.transform.position, Quaternion.identity);
+                //enemy.DecreaseHealth(damageEnemy);
                 StartCoroutine(SpawnGems(other.gameObject.transform.position));
                 Destroy(other.gameObject);
                 hasAttacked = true;
